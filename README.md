@@ -1,9 +1,7 @@
 #  CO-modeling
-This is a project to model late-time CO formation in SNe
+This is a project to model late-time CO formation in SNe. This repository does NOT currently include the CO modeling code, just tools to install and navigate it.
 
 ## Installation
-0. Make sure you have the model code or else the docker will not correctly install.
-   The model code is NOT currently included in this repository.
 1. Install [Docker](https://docs.docker.com/get-docker/).
 2. Install [docker-compose](https://docs.docker.com/compose/install/)
 3. Clone this repository: `git clone https://github.com/scottfdavis/CO-modeling`
