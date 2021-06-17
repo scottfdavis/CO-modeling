@@ -1,0 +1,14 @@
+version: '2.2'
+services:
+  lcosnpipe:
+    image: sfdavis/co_modeling:latest
+    network_mode: "bridge"
+    container_name: co_modeling
+    mem_limit: '8g'
+    entrypoint: ['/bin/bash', '-c', 'while [ true ]; do sleep 180; done;']
+    environment:
+      CODIR: "${CODIR:-/supernova}"
+    ports:
+      - "4306:3306"
+    volumes:
+      - ${CODIR:-./data}:${CODIR:-/supernova}
