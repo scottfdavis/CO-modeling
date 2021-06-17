@@ -50,7 +50,7 @@ if __name__ == "__main__":
         "--molefrac",
         dest="molefrac",
         default="0.0",
-        help="molecular fraction of excited state to neutral, e.g. CO+/CO",
+        help="molecular fraction of excited state to neutral, e.g. 0.1",
     )
     parser.add_argument(
         "-v",
