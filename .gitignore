@@ -2,3 +2,9 @@ Hoeflich_models.csv
 models_csv
 CO/*
 !CO/*py
+*bat
+*.pyc
+*.pyo
+*DS_Store
+*gitattributes
+*gitignore
