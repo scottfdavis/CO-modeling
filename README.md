@@ -2,14 +2,14 @@
 This is a project to model late-time CO formation in SNe. This repository does NOT currently include the CO modeling code, just tools to install and navigate it.
 
 ## Installation
-1. Install [Docker](https://docs.docker.com/get-docker/).
+1. Install [Docker](https://docs.docker.com/get-docker/)
 2. Install [docker-compose](https://docs.docker.com/compose/install/)
 3. Clone this repository: `git clone https://github.com/scottfdavis/CO-modeling`
-4. Within the repository folder put the model code in a directory called `CO`
+4. Within the repository folder put the model code in the `CO` directory
 5. Build the Docker image: `docker build -t sfdavis/co_modeling CO-modeling`
-6. Set your environment variables to point to where you want to store data and catalogs.
+6. Set your environment variables to point to where you want to store data and catalogs
    You may want to add these lines to your `.bashrc` (usually Linux) or `.bash_profile` (usually macOS) file
-   so that you don't have to set them in every new terminal session.
+   so that you don't have to set them in every new terminal session
    ```
    export CODIR=/your/data/directory
    ```  
@@ -33,7 +33,7 @@ This is a project to model late-time CO formation in SNe. This repository does N
 4. Create a new model with `python CO_wrapper.py`
 
 ## Notes
-The Docker does not currently support running the jupyter notebook included in this repository. The Docker environment is used for creating new models and not model fitting. It is expected that the model fitting be done outside the Docker.
+The Docker does not currently support running the jupyter notebook included in this repository. The Docker environment is used for creating new models and not model fitting. It is expected that the model fitting be done outside the Docker
 
 ## How to run the example jupyter notebook
 0. This is currently all done outside of the Docker, because the Docker does not include jupyter notebook, you will need the following python packages
