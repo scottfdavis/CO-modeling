@@ -36,7 +36,7 @@ This is a project to model late-time CO formation in SNe. This repository does N
 The Docker does not currently support running the jupyter notebook included in this repository. The Docker environment is used for creating new models and not model fitting. It is expected that the model fitting be done outside the Docker.
 
 ## How to run the example jupyter notebook
-0. This is currently all done outside of the Docker, you will need the following python packages
+0. This is currently all done outside of the Docker, because the Docker does not include jupyter notebook, you will need the following python packages
    ```
    numpy
    pandas
