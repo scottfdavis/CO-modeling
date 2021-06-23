@@ -1,6 +1,6 @@
 version: '2.2'
 services:
-  lcosnpipe:
+  CO-modeling:
     image: sfdavis/co_modeling:latest
     network_mode: "bridge"
     container_name: co_modeling
@@ -10,5 +10,3 @@ services:
       CODIR: "${CODIR:-/supernova}"
     ports:
       - "4306:3306"
-    volumes:
-      - ${CODIR:-./data}:${CODIR:-/supernova}
