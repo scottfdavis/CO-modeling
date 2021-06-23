@@ -33,20 +33,9 @@ def main(molecule, molefrac, velocity, temperature, density, nco):
                     )
 
     with open("trho.dat", "w") as f2:
-        if temperature is not None:
-            temperature = temperature.split(",")
-            temperature = np.linspace(int(temperature[1]), int(temperature[0]), 8)
-        else:
-            temperature = np.linspace(5000.0, 1500.0, 8)
         for x in temperature:
             f2.write(str(float(x)) + " ")
         f2.write("\n")
-
-        if density is not None:
-            density = density.split(",")
-            density = np.linspace(int(density[0]), int(density[1]), 4)
-        else:
-            density = [7, 8, 9, 11]
         for x in density:
             f2.write("1.E+" + str(int(x)) + " ")
         f2.write("\n")
@@ -108,9 +97,15 @@ if __name__ == "__main__":
 
     molefrac = parseInputs(args.molefrac)
     velocity = parseInputs(args.velocity)
+    temperature = parseInputs(args.temperature)
+    density = parseInputs(args.density)
     nco = parseInputs(args.nco)
 
     if args.molecule != "CO" and args.molecule != "SiO":
         print("Not a valid molecular selection.")
+    elif len(temperature) != 8:
+        print("Length of temperature grid needs to be 8")
+    elif len(density) != 4:
+        print("Length of density grid needs to be 4")
     else:
-        main(args.molecule, molefrac, velocity, args.temperature, args.density, nco)
+        main(args.molecule, molefrac, velocity, temperature, density, nco)
