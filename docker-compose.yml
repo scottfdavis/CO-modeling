@@ -10,3 +10,5 @@ services:
       CODIR: "${CODIR:-/supernova}"
     ports:
       - "4306:3306"
+    volumes:
+      - ${CODIR:-./data}:${CODIR:-/supernova}
