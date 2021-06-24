@@ -47,7 +47,15 @@ def create_df(molecule):
                 # write out model as a csv for easier look up later
                 mdf = pd.DataFrame(d)
                 mdf.to_csv(
-                    path_save + molecule + "_" + dataset[-1] + "_" + vel[-1] + "_" + frac[-1] + ".csv",
+                    path_save
+                    + molecule
+                    + "_"
+                    + dataset[-1]
+                    + "_"
+                    + vel[-1]
+                    + "_"
+                    + frac[-1]
+                    + ".csv",
                     index=False,
                 )
 
@@ -55,7 +63,14 @@ def create_df(molecule):
 
     df = pd.DataFrame([tot_files, dataset, frac, tot_temps, tot_dens, vel])
     df = df.transpose()
-    df.columns = ["filename", "dataset", "mole_frac", "temperature", "density", "velocity"]
+    df.columns = [
+        "filename",
+        "dataset",
+        "mole_frac",
+        "temperature",
+        "density",
+        "velocity",
+    ]
     df["molecule"] = [molecule for i in range(len(df))]
 
     return df

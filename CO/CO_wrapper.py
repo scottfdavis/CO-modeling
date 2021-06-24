@@ -72,14 +72,14 @@ if __name__ == "__main__":
         "-t",
         "--temperature",
         dest="temperature",
-        default='5000.,4000.,3500.,3000.,2500.,2000.,1750.,1500.',
-        help="temperature grid comma separated, must be length 8"
+        default="5000.,4000.,3500.,3000.,2500.,2000.,1750.,1500.",
+        help="temperature grid comma separated, must be length 8",
     )
     parser.add_argument(
         "-d",
         "--density",
         dest="density",
-        default='7,8,9,11',
+        default="7,8,9,11",
         help="density grid comma separated, e.g. 7,8,9,11, must be length 4",
     )
     parser.add_argument(

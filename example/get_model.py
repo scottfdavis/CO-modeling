@@ -34,10 +34,21 @@ def get_model(path, file, temp, n):
         opac = data[:, ind[0] + 1]
         return [wl, opac]
 
-def get_csv(path,temp,n,velocity,mole_frac,molecule,modelset):
-    modeldf = pd.read_csv(path+molecule+'_'+str(modelset)+'_'+str(velocity)+'_'+str(mole_frac)+'.csv')
+
+def get_csv(path, temp, n, velocity, mole_frac, molecule, modelset):
+    modeldf = pd.read_csv(
+        path
+        + molecule
+        + "_"
+        + str(modelset)
+        + "_"
+        + str(velocity)
+        + "_"
+        + str(mole_frac)
+        + ".csv"
+    )
 
     n = str(format(n, "10.2E")).strip()
     temp = str(format(temp, ".2f")).strip()
 
-    return [modeldf['wl'].values, modeldf[n+'/'+temp].values]
+    return [modeldf["wl"].values, modeldf[n + "/" + temp].values]
