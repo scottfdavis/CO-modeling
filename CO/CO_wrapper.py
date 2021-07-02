@@ -1,6 +1,11 @@
 import glob, os
 import numpy as np
 import argparse
+import sys
+import subprocess
+
+sys.path.insert(1, "../")
+import make_model_df
 
 # TO DO: add newly generated models to model_csv
 
@@ -40,7 +45,18 @@ def main(molecule, molefrac, velocity, temperature, density, nco):
             f2.write("1.E+" + str(int(x)) + " ")
         f2.write("\n")
 
-    os.system("sh model_params.bat")
+    p = subprocess.Popen("sh model_params.bat", stdout=subprocess.PIPE, shell=True)
+    p.wait()
+
+    # now add the new models as csv files and to the dataframe
+    files = []
+    for x in nco:
+        for v in velocity:
+            for mf in molefrac:
+                files.append("plot.dat_"+v+"_"+x+"_"+mf+"_"+molecule)
+
+    make_model_df.add_models(molecule, files)
+
     return
 
 
@@ -109,3 +125,5 @@ if __name__ == "__main__":
         print("Length of density grid needs to be 4")
     else:
         main(args.molecule, molefrac, velocity, temperature, density, nco)
+
+    print("Done.")

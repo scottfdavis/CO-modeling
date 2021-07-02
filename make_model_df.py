@@ -2,15 +2,21 @@ import numpy as np
 import pandas as pd
 import os, glob
 
+# can't have it only add new models when not given a specific set of files
+# because the T/density grid can be changed and there's no way to know without
+# opening the file to see what the grid is
 
-def create_df(molecule):
+CODIR = os.environ["CODIR"]
+path_CO = CODIR + "/CO/"
+path_save = CODIR + "/models_csv/"
+
+def create_df(molecule, files):
     # create a dataframe for all the models of a given molecule
-    files = glob.glob(path_CO + "plot.dat*" + molecule)
     vel, dataset, frac, tot_files, tot_temps, tot_dens = [[] for i in range(6)]
     d = {}
     file_count = 0
 
-    print("Parsing", len(files), "files")
+    print("Parsing", len(files), "models")
     for file in files:
         print(file_count)
         isave = 0
@@ -76,17 +82,34 @@ def create_df(molecule):
     return df
 
 
-cwd = os.getcwd()
-path_CO = cwd + "/CO/"
-path_save = cwd + "/models_csv/"
+def add_models(molecule, files):
+    try:
+        hdf = pd.read_csv(CODIR + "Hoeflich_models.csv")
+    except:
+        hdf = pd.DataFrame()
+        print("No previous model dataframe found, consider running make_model_df.py")
+
+    newdf = create_df(molecule, files)
+    # dropping duplicates to make sure we don't append a model that already exists
+    df = hdf.append(newdf).drop_duplicates()
+
+    df.to_csv(CODIR + "Hoeflich_models.csv", index=False)
+
+    return
+
 if __name__ == "__main__":
     if not os.path.isfile(path_save):
         os.system("mkdir " + path_save)
 
     print("Working on CO...")
-    codf = create_df("CO")
+    molecule = "CO"
+    files = glob.glob(path_CO + "plot.dat*" + molecule)
+    codf = create_df(molecule, files)
+
     print("Working on SiO...")
-    siodf = create_df("OSi")
+    molecule = "OSi"
+    files = glob.glob(path_CO + "plot.dat*" + molecule)
+    siodf = create_df(molecule, files)
     df = codf.append(siodf)
 
-    df.to_csv("Hoeflich_models.csv", index=False)
+    df.to_csv(CODIR + "Hoeflich_models.csv", index=False)
