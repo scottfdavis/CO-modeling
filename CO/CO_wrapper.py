@@ -53,7 +53,7 @@ def main(molecule, molefrac, velocity, temperature, density, nco):
     for x in nco:
         for v in velocity:
             for mf in molefrac:
-                files.append("plot.dat_"+v+"_"+x+"_"+mf+"_"+molecule)
+                files.append("plot.dat_" + v + "_" + x + "_" + mf + "_" + molecule)
 
     make_model_df.add_models(molecule, files)
 

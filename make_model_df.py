@@ -10,6 +10,7 @@ CODIR = os.environ["CODIR"]
 path_CO = CODIR + "/CO/"
 path_save = CODIR + "/models_csv/"
 
+
 def create_df(molecule, files):
     # create a dataframe for all the models of a given molecule
     vel, dataset, frac, tot_files, tot_temps, tot_dens = [[] for i in range(6)]
@@ -96,6 +97,7 @@ def add_models(molecule, files):
     df.to_csv(CODIR + "Hoeflich_models.csv", index=False)
 
     return
+
 
 if __name__ == "__main__":
     if not os.path.isfile(path_save):
