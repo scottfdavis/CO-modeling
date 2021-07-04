@@ -7,8 +7,8 @@ import os, glob
 # opening the file to see what the grid is
 
 CODIR = os.environ["CODIR"] + "/"
-path_CO = CODIR + "/CO/"
-path_save = CODIR + "/models_csv/"
+path_CO = CODIR + "CO/"
+path_save = CODIR + "models_csv/"
 
 
 def create_df(molecule, files):
