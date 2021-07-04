@@ -6,7 +6,7 @@ import os, glob
 # because the T/density grid can be changed and there's no way to know without
 # opening the file to see what the grid is
 
-CODIR = os.environ["CODIR"]
+CODIR = os.environ["CODIR"] + "/"
 path_CO = CODIR + "/CO/"
 path_save = CODIR + "/models_csv/"
 
