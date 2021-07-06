@@ -80,7 +80,7 @@ def create_df(molecule, files):
     ]
     df["molecule"] = [molecule for i in range(len(df))]
 
-    return df
+    return df.drop_duplicates()
 
 
 def add_models(molecule, files):
